@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
+//    kotlin("kapt")
+    id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
 
@@ -35,6 +36,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    viewBinding{
+        enable=true
+    }
 }
 
 dependencies {
@@ -46,8 +50,14 @@ dependencies {
     testImplementation("junit:junit:4.14-SNAPSHOT")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.48.1")
+    implementation ("com.karumi:dexter:6.2.3")
+    implementation ("androidx.activity:activity-ktx:1.8.0")
+    implementation ("androidx.fragment:fragment-ktx:1.6.1")
+}
+hilt {
+    enableExperimentalClasspathAggregation = true
 }
 kapt {
     correctErrorTypes = true
